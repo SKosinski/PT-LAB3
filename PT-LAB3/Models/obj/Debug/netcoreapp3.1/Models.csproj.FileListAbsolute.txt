@@ -1,0 +1,9 @@
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\bin\Debug\netcoreapp3.1\Models.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\bin\Debug\netcoreapp3.1\Models.pdb
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.csprojAssemblyReference.cache
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\Models\obj\Debug\netcoreapp3.1\Models.pdb
