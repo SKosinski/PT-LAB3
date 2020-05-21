@@ -28,7 +28,15 @@ namespace PT_LAB3.Controllers
             return await _context.Book.ToListAsync();
         }
 
-        // GET: api/Books/5
+        // GET: api/Books/1
+        /*
+         Dostajemy:
+         {
+           "Title":"Mikołajek",
+           "Author": "Gościnny",
+           "IsRented": false
+         }
+         */
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
@@ -42,7 +50,16 @@ namespace PT_LAB3.Controllers
             return book;
         }
 
+
         // PUT: api/Books/5
+        /*
+        {
+            "ID": 3,
+            "Title": "Barry Trotter",
+            "Author": "JK Jumpling"
+        }
+        */
+        // Adres: /api/books/3
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -76,6 +93,25 @@ namespace PT_LAB3.Controllers
 
         // POST: api/Books
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        /*
+         {
+           "Title":"Mikołajek",
+           "Author": "Gościnny",
+           "IsRented": false
+         }
+         
+         {
+           "Title":"Wielka śmierć",
+           "Author": "Bonda",
+           "IsRented": false
+         }
+         
+         {
+           "Title":"Harry Potter",
+           "Author": "JK Rowling",
+           "IsRented": false
+         }
+         */
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
@@ -87,6 +123,8 @@ namespace PT_LAB3.Controllers
         }
 
         // DELETE: api/Books/5
+        //Adres api/books/2
+        //Usuwa książkę "Wielka Śmierć"
         [HttpDelete("{id}")]
         public async Task<ActionResult<Book>> DeleteBook(int id)
         {

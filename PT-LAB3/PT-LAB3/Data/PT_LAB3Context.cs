@@ -17,5 +17,7 @@ namespace PT_LAB3.Data
         public DbSet<PT_LAB3.Models.Book> Book { get; set; }
 
         public DbSet<PT_LAB3.Models.User> User { get; set; }
+
+        public DbSet<PT_LAB3.Models.Rent> Rent { get; set; }
     }
 }

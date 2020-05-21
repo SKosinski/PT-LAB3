@@ -28,7 +28,8 @@ namespace PT_LAB3.Controllers
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/Users/2
+        // Wyswietli Zbigniewa
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -42,7 +43,14 @@ namespace PT_LAB3.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Users/1
+        /*
+         {
+           "Name":"Arnold",
+           "Surname": "Kasztelan",
+           "EMail": "arnold.kasz@wp.pl"
+         }
+         */
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -75,6 +83,25 @@ namespace PT_LAB3.Controllers
         }
 
         // POST: api/Users
+        /*
+         {
+           "Name":"Adam",
+           "Surname": "Kasztan",
+           "EMail": "adam.kasz@wp.pl"
+         }
+
+         {
+           "Name":"Zbigniew",
+           "Surname": "Boniek",
+           "EMail": "zibi.bon@o2.pl"
+         }
+
+         {
+           "Name":"Michał",
+           "Surname": "Materla",
+           "EMail": "m.m@gmail.com"
+         }
+         */
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -86,7 +113,8 @@ namespace PT_LAB3.Controllers
             return CreatedAtAction("GetUser", new { id = user.ID }, user);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Users/3
+        //Usunie Michała
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
         {
