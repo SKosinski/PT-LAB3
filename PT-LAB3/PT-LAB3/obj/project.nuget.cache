@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QTkkr2nm1mMQ7EmBa/8uLLcHHHv/8jVUu9ZPHRnjsQZjzh2pt620I2eysocpjKLYyI+qqVYz5ILG6kGeRbF3Zg==",
+  "dgSpecHash": "XfVym9DDoDdLcZRaFVDCJbuyKyE3ikNRZ1fUYTLompLQDICaiZ5o+TW0nzTClJFx6LID80vUaqdcfvXuc5c2LQ==",
   "success": true,
   "projectFilePath": "D:\\Repos\\Studia\\PlatformyTechnologiczne\\PT-LAB3\\PT-LAB3\\PT-LAB3\\PT-LAB3.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Praca\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.4\\microsoft.aspnetcore.authentication.google.3.1.4.nupkg.sha512",
     "C:\\Users\\Praca\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Praca\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Praca\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

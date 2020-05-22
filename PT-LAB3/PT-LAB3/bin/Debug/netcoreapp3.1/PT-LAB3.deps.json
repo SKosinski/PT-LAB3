@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "PT-LAB3/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.4",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.4",
@@ -303,6 +304,17 @@
         },
         "compile": {
           "PT-LAB3.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.4": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.4.0",
+            "fileVersion": "3.100.420.21604"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -3937,6 +3949,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YaSqdLcLxb7+f/5LY/r8FJCyzmGx3AmGeT3zo9/TOEp4nn3xSNoIMy2Du4dmBhmr/pM6QZOoIxVwXDOxGN2lhg==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.4",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",

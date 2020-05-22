@@ -145,5 +145,6 @@ D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcor
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\obj\Debug\netcoreapp3.1\PT-LAB3.csproj.CoreCompileInputs.cache
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\obj\Debug\netcoreapp3.1\PT-LAB3.MvcApplicationPartsAssemblyInfo.cache

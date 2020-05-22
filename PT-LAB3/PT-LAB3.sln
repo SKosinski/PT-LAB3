@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PT-LAB3", "PT-LAB3\PT-LAB3.csproj", "{64218A81-411F-41E7-933B-076C67314A24}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3D24AFB4-31A7-4E97-A544-FC0564810D38} = {3D24AFB4-31A7-4E97-A544-FC0564810D38}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{3D24AFB4-31A7-4E97-A544-FC0564810D38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PT-LAB3", "PT-LAB3\PT-LAB3.csproj", "{64218A81-411F-41E7-933B-076C67314A24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +15,6 @@ Global
 		{64218A81-411F-41E7-933B-076C67314A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64218A81-411F-41E7-933B-076C67314A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64218A81-411F-41E7-933B-076C67314A24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D24AFB4-31A7-4E97-A544-FC0564810D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D24AFB4-31A7-4E97-A544-FC0564810D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D24AFB4-31A7-4E97-A544-FC0564810D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D24AFB4-31A7-4E97-A544-FC0564810D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

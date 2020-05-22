@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using PT_LAB3.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace PT_LAB3
 {
@@ -29,6 +32,24 @@ namespace PT_LAB3
         {
             services.AddControllers();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme; 
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                options.DefaultSignOutScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddGoogle(options =>
+            {
+                options.ClientId = "551853330629-hhtbdc9sjsfdhprne98v1tei40085i2b.apps.googleusercontent.com"; 
+                options.ClientSecret = "CnB-FWnR4KFzqoustXm9OaUg";
+            }).AddCookie(options => 
+            { 
+                options.Cookie.HttpOnly = true; 
+                options.Cookie.SameSite = SameSiteMode.None; 
+            });
+
+            services.AddMvc();
+
             services.AddDbContext<PT_LAB3Context>(options =>
                     options.UseInMemoryDatabase("PT_LAB3Context"));
         }
@@ -39,7 +60,14 @@ namespace PT_LAB3
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using(var ss = app.ApplicationServices.CreateScope())                
+                { 
+                    var context = ss.ServiceProvider.GetService<PT_LAB3Context>(); 
+                    context.User.Add(new Models.User { Name = "AAA", Surname = "BBB", EMail = "aaa.bbb@onet.pl" }); 
+                    context.SaveChanges(); 
+                }
             }
+        
 
             app.UseHttpsRedirection();
 
