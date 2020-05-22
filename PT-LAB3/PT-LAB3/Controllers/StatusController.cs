@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Logging;
+using PT_LAB3.Data;
 using PT_LAB3.Models;
 
 namespace PT_LAB3.Controllers
@@ -14,14 +15,13 @@ namespace PT_LAB3.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
-        private readonly ILogger<StatusController> _logger;
+        private readonly PT_LAB3Context _context;
 
-        public StatusController(ILogger<StatusController> logger)
+        public StatusController(PT_LAB3Context context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        [HttpGet]
         [HttpGet]
         public Models.Status Get()
         {
