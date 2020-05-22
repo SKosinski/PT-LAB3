@@ -15,13 +15,6 @@ namespace PT_LAB3.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
-        private readonly PT_LAB3Context _context;
-
-        public StatusController(PT_LAB3Context context)
-        {
-            _context = context;
-        }
-
         [HttpGet]
         public Models.Status Get()
         {
