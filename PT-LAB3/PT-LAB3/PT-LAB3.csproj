@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>PT_LAB3</RootNamespace>
+    <UserSecretsId>3db6cfc4-733f-401a-a0e8-dd337646ba49</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

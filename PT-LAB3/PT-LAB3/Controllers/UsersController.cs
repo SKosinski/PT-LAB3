@@ -12,7 +12,7 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "Admin")]
     [ApiController]
     public class UsersController : ControllerBase
     {

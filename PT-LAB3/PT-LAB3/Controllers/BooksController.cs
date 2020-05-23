@@ -12,7 +12,6 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -25,6 +24,7 @@ namespace PT_LAB3.Controllers
 
         // GET: api/Books
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Book>>> GetBook()
         {
             return await _context.Book.ToListAsync();

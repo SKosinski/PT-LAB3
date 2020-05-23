@@ -12,7 +12,6 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class RentsController : ControllerBase
     {
