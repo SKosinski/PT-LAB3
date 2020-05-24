@@ -32,11 +32,10 @@ namespace PT_LAB3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
 
             services.AddDbContext<PT_LAB3Context>(options =>
                     options.UseInMemoryDatabase("PT_LAB3Context"));
-
-            services.AddControllers();
 
             services.AddAuthentication(options =>
             {
@@ -51,8 +50,9 @@ namespace PT_LAB3
             }).AddCookie(options => 
             { 
                 options.Cookie.HttpOnly = false; 
-                options.Cookie.SameSite = SameSiteMode.Lax; 
+                options.Cookie.SameSite = SameSiteMode.None; 
             });
+
             services.AddAuthorization(options =>
                 options.AddPolicy("User", policy =>
                     policy.Requirements.Add(new UserPolicyRequirement())));
@@ -60,9 +60,12 @@ namespace PT_LAB3
             services.AddAuthorization(options =>
                 options.AddPolicy("Admin", policy =>
                     policy.Requirements.Add(new AdminPolicyRequirement())));
-            services.AddSingleton<IAuthorizationHandler, UserPolicyHandler>();
 
+            services.AddSingleton<IAuthorizationHandler, UserPolicyHandler>();
             services.AddSingleton<IAuthorizationHandler, AdminPolicyHandler>();
+
+            //services.AddControllers();
+
             services.AddMvc();
         }
 
@@ -114,13 +117,15 @@ namespace PT_LAB3
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            //app.UseMvc();
         }
     }
 }
