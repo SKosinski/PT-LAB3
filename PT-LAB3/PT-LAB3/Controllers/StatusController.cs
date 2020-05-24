@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -12,6 +13,7 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class StatusController : ControllerBase
     {
