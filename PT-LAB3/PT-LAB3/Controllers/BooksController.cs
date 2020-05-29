@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,9 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
+    // PODP6
+    [EnableCors("CorsPolicy")]
+    // PODP4.2
     [Authorize]
     [ApiController]
     public class BooksController : ControllerBase
@@ -23,7 +27,9 @@ namespace PT_LAB3.Controllers
             _context = context;
         }
 
+        // PODP2.8
         // GET: api/Books
+        // Wyswietla wszystkie ksiazki
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Book>>> GetBook()
@@ -31,7 +37,9 @@ namespace PT_LAB3.Controllers
             return await _context.Book.ToListAsync();
         }
 
+        // PODP2.7
         // GET: api/Books/1
+        // Wyświetla pojedynczą książkę
         /*
          Dostajemy:
          {
@@ -53,8 +61,9 @@ namespace PT_LAB3.Controllers
             return book;
         }
 
-
-        // PUT: api/Books/5
+        // PODP2.9
+        // PUT: api/Books/3
+        // Aktualizuje 3 książkę 
         /*
         {
             "ID": 3,
@@ -62,9 +71,6 @@ namespace PT_LAB3.Controllers
             "Author": "JK Jumpling"
         }
         */
-        // Adres: /api/books/3
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(int id, Book book)
         {
@@ -94,8 +100,9 @@ namespace PT_LAB3.Controllers
             return NoContent();
         }
 
+        // PODP2.6
         // POST: api/Books
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // Dodaje 3 książki
         /*
          {
            "Title":"Mikołajek",
@@ -115,7 +122,6 @@ namespace PT_LAB3.Controllers
            "IsRented": false
          }
          */
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
@@ -125,9 +131,9 @@ namespace PT_LAB3.Controllers
             return CreatedAtAction("GetBook", new { id = book.ID }, book);
         }
 
-        // DELETE: api/Books/5
-        //Adres api/books/2
-        //Usuwa książkę "Wielka Śmierć"
+        // PODP2.10
+        // DELETE: api/Books/2
+        // Usuwa książkę "Wielka Śmierć"
         [HttpDelete("{id}")]
         public async Task<ActionResult<Book>> DeleteBook(int id)
         {

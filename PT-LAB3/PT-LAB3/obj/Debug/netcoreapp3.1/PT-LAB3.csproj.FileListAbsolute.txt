@@ -155,8 +155,12 @@ D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcor
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\PT-LAB3.StaticWebAssets.xml
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.Graph.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.Graph.Core.dll
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\obj\Debug\netcoreapp3.1\PT-LAB3.csproj.CoreCompileInputs.cache
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\obj\Debug\netcoreapp3.1\PT-LAB3.MvcApplicationPartsAssemblyInfo.cs
 D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\obj\Debug\netcoreapp3.1\PT-LAB3.MvcApplicationPartsAssemblyInfo.cache
-D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\PT-LAB3.StaticWebAssets.xml
-D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Google.Api.CommonProtos.dll
+D:\Repos\Studia\PlatformyTechnologiczne\PT-LAB3\PT-LAB3\PT-LAB3\bin\Debug\netcoreapp3.1\Google.Protobuf.dll

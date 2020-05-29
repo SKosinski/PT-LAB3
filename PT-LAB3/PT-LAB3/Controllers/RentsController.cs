@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,10 @@ using PT_LAB3.Models;
 namespace PT_LAB3.Controllers
 {
     [Route("api/[controller]")]
+    // PODP6
+    [EnableCors("CorsPolicy")]
+    // PODP4.2
+    [Authorize]
     [ApiController]
     public class RentsController : ControllerBase
     {
@@ -51,11 +56,12 @@ namespace PT_LAB3.Controllers
             return rent;
         }
 
+        // PODP3.3
         /*
          Wpisujemy:
          /api/rents/book/1
          
-         Dostajemy wszystkich wypozyczajacych ksiazke 1:
+         Dostajemy wszystkich wypozyczajacych ksiazke 1, ponieważ inaczej ta funkcja nie ma sensu, zawsze wyświetli tylko jednego użytkownika:
          [
              {
                  "id": 2,
@@ -76,8 +82,7 @@ namespace PT_LAB3.Controllers
         {
             var rentList = await _context.Rent.ToListAsync();
             var userList = new List<User>();
-            var userssController = new UsersController(_context);
-
+            //var usersController = new UsersController(_context);
             foreach (var rentRecord in rentList)
             {
                 if (rentRecord.BookID == id)
@@ -95,11 +100,13 @@ namespace PT_LAB3.Controllers
             return userList;
         }
 
+        // PODP3.2
+        // PODP4.3
         /*
          Wpisujemy:
-         /api/rents/user/1
+         /api/rents/user
          
-         Dostajemy wszystkie ksiazki usera 1:
+         Dostajemy wszystkie ksiazki zalogowanego usera:
          [
              {
                  "id": 2,
@@ -115,16 +122,22 @@ namespace PT_LAB3.Controllers
              }
          ]
          */
-        [HttpGet("user/{id}")]
-        public async Task<ActionResult<IEnumerable<Book>>> GetUserRent(int id)
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetUserRent()
         {
             var rentList = await _context.Rent.ToListAsync();
             var bookList = new List<Book>();
-            var booksController = new BooksController(_context);
-
+            var me = User.Claims.ToList();
+            //var booksController = new BooksController(_context);
+            var knownUser = _context.User
+                    .Where(b => b.Name == me[2].Value.ToString())
+                    .Where(b => b.Surname == me[3].Value.ToString())
+                    .Where(b => b.EMail == me[4].Value.ToString())
+                    .FirstOrDefault();
+            
             foreach (var rentRecord in rentList)
             {
-                if (rentRecord.UserID == id)
+                if (rentRecord.UserID == knownUser.ID)
                 {
                     bookList.Add(_context.Book.Find(rentRecord.BookID));
                 }
@@ -140,8 +153,6 @@ namespace PT_LAB3.Controllers
         }
 
         // PUT: api/Rents/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRent(int id, Rent rent)
         {
@@ -171,7 +182,9 @@ namespace PT_LAB3.Controllers
             return NoContent();
         }
 
+        // PODP3.1
         // POST: api/Rents
+        // Wypożycz danemu uzytkownikowi daną książkę
         /*
          {
          	"BookID": 3,
@@ -193,12 +206,15 @@ namespace PT_LAB3.Controllers
 	         "UserID": 3
          }
          */
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Rent>> PostRent(Rent rent)
         {
             _context.Rent.Add(rent);
+            await _context.SaveChangesAsync();
+
+            var book = _context.Book.Where(p => p.ID == rent.BookID).FirstOrDefault();
+            if (book != null)
+                book.IsRented = true;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRent", new { id = rent.ID }, rent);
@@ -209,12 +225,20 @@ namespace PT_LAB3.Controllers
         public async Task<ActionResult<Rent>> DeleteRent(int id)
         {
             var rent = await _context.Rent.FindAsync(id);
+            var bookID = rent.BookID;
             if (rent == null)
             {
                 return NotFound();
             }
 
             _context.Rent.Remove(rent);
+            await _context.SaveChangesAsync();
+
+            var isRented = _context.Rent.Where(r => r.BookID == bookID).FirstOrDefault();
+            if (isRented==null)
+            {
+                _context.Book.Where(b => b.ID == bookID).FirstOrDefault().IsRented = false;
+            }
             await _context.SaveChangesAsync();
 
             return rent;

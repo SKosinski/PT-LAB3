@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
+using Google.Api;
+using System.Security.Claims; 
 
 namespace PT_LAB3
 {
@@ -26,6 +28,13 @@ namespace PT_LAB3
         {
             Configuration = configuration;
         }
+
+        //private AuthorizationHandlerContext _aContext;
+
+        //public static void RequestAuthorizationHandlerContext (AuthorizationHandlerContext context)
+        //{
+        //    _aContext = context;
+        //}
 
         public IConfiguration Configuration { get; }
 
@@ -37,6 +46,13 @@ namespace PT_LAB3
             services.AddDbContext<PT_LAB3Context>(options =>
                     options.UseInMemoryDatabase("PT_LAB3Context"));
 
+            // PODP4.1
+            /*
+             * Aby skorzystaæ z tego rozwi¹zania w postmanie
+             * nale¿y do postmanowego requesta dodaæ cookie
+             * zrobiony wczeœniej w przegl¹darce
+             * Ÿród³o rozwi¹zania: https://community.postman.com/t/how-to-test-asp-net-core-web-api-with-cookie-authentication-using-postman/4809
+             */
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -53,45 +69,51 @@ namespace PT_LAB3
                 options.Cookie.SameSite = SameSiteMode.None; 
             });
 
+            // PODP6
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44314/");
+                    });
+            });
+
+
             services.AddAuthorization(options =>
                 options.AddPolicy("User", policy =>
                     policy.Requirements.Add(new UserPolicyRequirement())));
 
-            services.AddAuthorization(options =>
-                options.AddPolicy("Admin", policy =>
-                    policy.Requirements.Add(new AdminPolicyRequirement())));
-
             services.AddSingleton<IAuthorizationHandler, UserPolicyHandler>();
-            services.AddSingleton<IAuthorizationHandler, AdminPolicyHandler>();
-
-            //services.AddControllers();
 
             services.AddMvc();
+            
         }
 
-        public class AdminPolicyHandler : AuthorizationHandler<AdminPolicyRequirement>
-        {
-            const string GoogleEmailAddressSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
-            protected override Task HandleRequirementAsync(
-                AuthorizationHandlerContext context,
-                AdminPolicyRequirement requirement)
-            {
-                var email = context.User.Claims.FirstOrDefault(p =>
-                    p.Issuer.Equals("Google") &&
-                    p.Type.Equals(GoogleEmailAddressSchema));
-                if (email != null && email.Value.Equals("stanislaw.j.kosinski@gmail.com"))
-                    context.Succeed(requirement);
-                return Task.CompletedTask;
-            }
-        }
+        //public class AdminPolicyHandler : AuthorizationHandler<AdminPolicyRequirement>
+        //{
+        //    const string GoogleEmailAddressSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        //    protected override Task HandleRequirementAsync(
+        //        AuthorizationHandlerContext context,
+        //        AdminPolicyRequirement requirement)
+        //    {
+        //        var email = context.User.Claims.FirstOrDefault(p =>
+        //            p.Issuer.Equals("Google") &&
+        //            p.Type.Equals(GoogleEmailAddressSchema));
+        //        if (email != null && email.Value.Equals("stanislaw.j.kosinski@gmail.com"))
+        //            context.Succeed(requirement);
+        //        return Task.CompletedTask;
+        //    }
+        //}
 
-        public class AdminPolicyRequirement : IAuthorizationRequirement { }
+        //public class AdminPolicyRequirement : IAuthorizationRequirement { }
         public class UserPolicyHandler : AuthorizationHandler<UserPolicyRequirement>
         {
             protected override Task HandleRequirementAsync(
                 AuthorizationHandlerContext context,
                 UserPolicyRequirement requirement)
             {
+                var user = context.User.Claims.ToList();
                 context.Succeed(requirement);
                 return Task.CompletedTask;
             }
@@ -105,19 +127,32 @@ namespace PT_LAB3
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                using(var ss = app.ApplicationServices.CreateScope())                
-                { 
-                    var context = ss.ServiceProvider.GetService<PT_LAB3Context>(); 
-                    context.User.Add(new Models.User { Name = "AAA", Surname = "BBB", EMail = "aaa.bbb@onet.pl" }); 
-                    context.SaveChanges(); 
-                }
+                //using(var ss = app.ApplicationServices.CreateScope())                
+                //{ 
+                //    var context = ss.ServiceProvider.GetService<PT_LAB3Context>();
+
+                //    //const string GoogleEmailAddressSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+
+                //    //var email = _aContext.User.Claims.FirstOrDefault(p =>
+                //    //    p.Issuer.Equals("Google") &&
+                //    //    p.Type.Equals(GoogleEmailAddressSchema));
+                //    //var name = _aContext.User.Claims.ToList();
+                //    ////var surname
+
+                //    //if (email != null && email != null && email != null)
+
+                //    context.User.Add(new Models.User { Name = "AAA", Surname = "BBB", EMail = "aaa.bbb@onet.pl" }); 
+                //    context.SaveChanges(); 
+                //}
             }
         
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            
+
+            app.UseCors();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
