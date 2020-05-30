@@ -68,7 +68,8 @@ namespace PT_LAB3.Controllers
         {
             "ID": 3,
             "Title": "Barry Trotter",
-            "Author": "JK Jumpling"
+            "Author": "JK Jumpling",
+            "isRented": false
         }
         */
         [HttpPut("{id}")]

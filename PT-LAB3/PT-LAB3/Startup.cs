@@ -29,13 +29,6 @@ namespace PT_LAB3
             Configuration = configuration;
         }
 
-        //private AuthorizationHandlerContext _aContext;
-
-        //public static void RequestAuthorizationHandlerContext (AuthorizationHandlerContext context)
-        //{
-        //    _aContext = context;
-        //}
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -44,7 +37,7 @@ namespace PT_LAB3
             services.AddControllers();
 
             services.AddDbContext<PT_LAB3Context>(options =>
-                    options.UseInMemoryDatabase("PT_LAB3Context"));
+                options.UseSqlServer(Configuration["ConnectionStrings:PTLAB3stanislawk171978"]));
 
             // PODP4.1
             /*
@@ -90,23 +83,6 @@ namespace PT_LAB3
             
         }
 
-        //public class AdminPolicyHandler : AuthorizationHandler<AdminPolicyRequirement>
-        //{
-        //    const string GoogleEmailAddressSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
-        //    protected override Task HandleRequirementAsync(
-        //        AuthorizationHandlerContext context,
-        //        AdminPolicyRequirement requirement)
-        //    {
-        //        var email = context.User.Claims.FirstOrDefault(p =>
-        //            p.Issuer.Equals("Google") &&
-        //            p.Type.Equals(GoogleEmailAddressSchema));
-        //        if (email != null && email.Value.Equals("stanislaw.j.kosinski@gmail.com"))
-        //            context.Succeed(requirement);
-        //        return Task.CompletedTask;
-        //    }
-        //}
-
-        //public class AdminPolicyRequirement : IAuthorizationRequirement { }
         public class UserPolicyHandler : AuthorizationHandler<UserPolicyRequirement>
         {
             protected override Task HandleRequirementAsync(
@@ -127,25 +103,7 @@ namespace PT_LAB3
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //using(var ss = app.ApplicationServices.CreateScope())                
-                //{ 
-                //    var context = ss.ServiceProvider.GetService<PT_LAB3Context>();
-
-                //    //const string GoogleEmailAddressSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
-
-                //    //var email = _aContext.User.Claims.FirstOrDefault(p =>
-                //    //    p.Issuer.Equals("Google") &&
-                //    //    p.Type.Equals(GoogleEmailAddressSchema));
-                //    //var name = _aContext.User.Claims.ToList();
-                //    ////var surname
-
-                //    //if (email != null && email != null && email != null)
-
-                //    context.User.Add(new Models.User { Name = "AAA", Surname = "BBB", EMail = "aaa.bbb@onet.pl" }); 
-                //    context.SaveChanges(); 
-                //}
             }
-        
 
             app.UseHttpsRedirection();
 
@@ -160,7 +118,6 @@ namespace PT_LAB3
             {
                 endpoints.MapControllers();
             });
-            //app.UseMvc();
         }
     }
 }

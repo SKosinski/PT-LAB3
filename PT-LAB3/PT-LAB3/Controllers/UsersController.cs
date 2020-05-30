@@ -58,13 +58,12 @@ namespace PT_LAB3.Controllers
         // Zaktualizuje Adama (1 użytkownika)
         /*
          {
+           "ID":2,	
            "Name":"Arnold",
            "Surname": "Kasztelan",
            "EMail": "arnold.kasz@wp.pl"
          }
          */
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
